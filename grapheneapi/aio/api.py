@@ -113,7 +113,7 @@ class Api(SyncApi):
                     log.warning("Connection was closed remotely.")
                     log.warning("Reconnecting ...")
                     self.error_url()
-                    self.next()
+                    await self.next()
                 except Exception as e:  # pragma: no cover
                     """When something fails talking to the backend"""
                     import traceback
@@ -122,7 +122,7 @@ class Api(SyncApi):
                     log.warning(str(e))
                     log.warning("Reconnecting ...")
                     self.error_url()
-                    self.next()
+                    await self.next()
 
             return r
 
