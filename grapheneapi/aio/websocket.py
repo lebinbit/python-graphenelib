@@ -22,7 +22,7 @@ class Websocket(Rpc):
 
     async def connect(self):
         ssl = True if self.url[:3] == "wss" else None
-        self.ws = await websockets.connect(self.url, ssl=ssl, loop=self.loop)
+        self.ws = await websockets.connect(self.url, ssl=ssl, loop=self.loop,max_size=2**20*10)
         self.loop.create_task(self._parsing_wrapper())
 
     async def disconnect(self):
